@@ -19,12 +19,24 @@ injectGlobal`
   }
 `;
 
+const dummyData = [
+  { title: "태종" },
+  { title: "정종" },
+  { title: "태조" },
+  { title: "세종" },
+  { title: "문종" },
+  { title: "단종" },
+  { title: "세조" }
+];
+
 class App extends React.Component {
   public render() {
     return (
       <ThemeProvider theme={theme}>
         <Container>
-          <Card>Card</Card>
+          {dummyData.map((value, index) => (
+            <Card key={index}>{`${index + 1}대 ${value.title}`}</Card>
+          ))}
         </Container>
       </ThemeProvider>
     );

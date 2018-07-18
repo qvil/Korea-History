@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Container } from "src/components";
+import { Card, Container } from "src/components";
 import { height100 } from "src/styles/mixin";
-import { injectGlobal } from "styled-components";
+import theme from "src/styles/theme";
+import { injectGlobal, ThemeProvider } from "styled-components";
 
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`
@@ -20,7 +21,13 @@ injectGlobal`
 
 class App extends React.Component {
   public render() {
-    return <Container backgroundColor="blue">App</Container>;
+    return (
+      <ThemeProvider theme={theme}>
+        <Container>
+          <Card>Card</Card>
+        </Container>
+      </ThemeProvider>
+    );
   }
 }
 

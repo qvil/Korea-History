@@ -4,10 +4,12 @@ import styled from "styled-components";
 
 export interface ICardProps {
   raised?: boolean;
+  image?: string;
 }
 
 const StyledCard = styled<ICardProps, any>("div")`
   ${props => (props.raised ? RaisedCardStyle : CardStyle)};
+  background: no-repeat center/100% url(${props => props.image});
   width: 10rem;
 `;
 

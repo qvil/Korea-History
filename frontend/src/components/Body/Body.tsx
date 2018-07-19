@@ -12,7 +12,9 @@ export default class Body extends React.Component<IBodyProps, any> {
     return (
       <BodyContainer>
         {data.data.map((value: any, index: number) => (
-          <Card key={index}>{`${index + 1}대 ${value.title}`}</Card>
+          <Card key={index} image={value.image}>{`${index + 1}대 ${
+            value.title
+          }`}</Card>
         ))}
       </BodyContainer>
     );

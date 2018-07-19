@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Card, Container } from "src/components";
+import { Container } from "src/components";
 import Body from "src/components/Body";
+import Header from "src/components/Header";
 import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import { injectGlobal, ThemeProvider } from "styled-components";
@@ -20,26 +21,13 @@ injectGlobal`
   }
 `;
 
-const dummyData = [
-  { title: "태종" },
-  { title: "정종" },
-  { title: "태조" },
-  { title: "세종" },
-  { title: "문종" },
-  { title: "단종" },
-  { title: "세조" }
-];
-
 class App extends React.Component {
   public render() {
     return (
       <ThemeProvider theme={theme}>
         <Container>
-          <Body>
-            {dummyData.map((value, index) => (
-              <Card key={index}>{`${index + 1}대 ${value.title}`}</Card>
-            ))}
-          </Body>
+          <Header />
+          <Body />
         </Container>
       </ThemeProvider>
     );

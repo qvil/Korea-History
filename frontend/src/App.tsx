@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Card, Container } from "src/components";
+import Body from "src/components/Body";
 import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import { injectGlobal, ThemeProvider } from "styled-components";
@@ -34,9 +35,11 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <Container>
-          {dummyData.map((value, index) => (
-            <Card key={index}>{`${index + 1}대 ${value.title}`}</Card>
-          ))}
+          <Body>
+            {dummyData.map((value, index) => (
+              <Card key={index}>{`${index + 1}대 ${value.title}`}</Card>
+            ))}
+          </Body>
         </Container>
       </ThemeProvider>
     );

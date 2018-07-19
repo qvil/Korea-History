@@ -8,6 +8,7 @@ export interface ICardProps {
 
 const StyledCard = styled<ICardProps, any>("div")`
   ${props => (props.raised ? RaisedCardStyle : CardStyle)};
+  width: 10rem;
 `;
 
 export default class Card extends React.Component<ICardProps, any> {

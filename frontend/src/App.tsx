@@ -1,4 +1,6 @@
+import ApolloClient from "apollo-boost";
 import * as React from "react";
+import { ApolloProvider } from "react-apollo";
 import { Container } from "src/components";
 import Body from "src/components/Body";
 import Header from "src/components/Header";
@@ -6,7 +8,10 @@ import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import { injectGlobal, ThemeProvider } from "styled-components";
 
-// tslint:disable-next-line:no-unused-expression
+const client = new ApolloClient({
+  uri: "http://localhost:4000/"
+});
+
 injectGlobal`
   html, body {
     margin: 0;
@@ -24,12 +29,14 @@ injectGlobal`
 class App extends React.Component {
   public render() {
     return (
-      <ThemeProvider theme={theme}>
-        <Container>
-          <Header />
-          <Body />
-        </Container>
-      </ThemeProvider>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <Container>
+            <Header />
+            <Body />
+          </Container>
+        </ThemeProvider>
+      </ApolloProvider>
     );
   }
 }

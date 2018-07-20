@@ -1,0 +1,22 @@
+{
+  "name": "korea-history-backend",
+  "version": "1.0.0",
+  "description": "Korea History Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "start": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "qvil",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.0.0-rc.12",
+    "graphql": "^0.13.2",
+    "tsc-watch": "^1.0.24"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}

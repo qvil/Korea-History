@@ -1,4 +1,5 @@
 import ApolloClient from "apollo-boost";
+import { defaultDataIdFromObject, InMemoryCache } from "apollo-cache-inmemory";
 import * as React from "react";
 import { ApolloProvider } from "react-apollo";
 import { Container } from "src/components";
@@ -8,7 +9,18 @@ import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import { injectGlobal, ThemeProvider } from "styled-components";
 
+const cache = new InMemoryCache({
+  dataIdFromObject: (object: any) => {
+    switch (object.__typename) {
+      case "foo":
+        return object.key;
+      default:
+        return defaultDataIdFromObject(object);
+    }
+  }
+});
 const client = new ApolloClient({
+  cache,
   uri: "http://localhost:4000/"
 });
 

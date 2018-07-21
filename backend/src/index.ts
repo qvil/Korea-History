@@ -1,7 +1,7 @@
-import { ApolloServer, gql } from "apollo-server";
+import { GraphQLServer } from "graphql-yoga";
 import data from "./data.json";
 
-const typeDefs = gql`
+const typeDefs = `
   type King {
     title: String
     image: String
@@ -17,8 +17,9 @@ const resolvers = {
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const options = { port: 4000 };
+const server = new GraphQLServer({ typeDefs, resolvers });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+server.start(options, () => {
+  console.log(`🚀  Server ready at ${options.port}`);
 });

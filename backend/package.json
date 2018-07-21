@@ -12,8 +12,8 @@
   "author": "qvil",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.0.0-rc.12",
     "graphql": "^0.13.2",
+    "graphql-yoga": "^1.14.12",
     "tsc-watch": "^1.0.24"
   },
   "devDependencies": {

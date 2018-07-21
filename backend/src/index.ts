@@ -1,21 +1,6 @@
 import { GraphQLServer } from "graphql-yoga";
-import data from "./data.json";
-
-const typeDefs = `
-  type King {
-    title: String
-    image: String
-  }
-  type Query {
-    kings: [King]
-  }
-`;
-
-const resolvers = {
-  Query: {
-    kings: () => data.data
-  }
-};
+import typeDefs from "./graphql/typeDefs";
+import resolvers from "./graphql/resolvers";
 
 const options = { port: 4000 };
 const server = new GraphQLServer({ typeDefs, resolvers });

@@ -65,3 +65,6 @@ typings/
 
 # distribution
 dist
+
+# config
+config.json

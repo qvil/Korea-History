@@ -2,29 +2,27 @@ import { GraphQLServer } from "graphql-yoga";
 import typeDefs from "./graphql/typeDefs";
 import resolvers from "./graphql/resolvers";
 import mongodb from "mongodb";
-import { id, password } from "./config/config.json";
+import config from "./config/config.json";
 
+const id = config.id;
+const password = config.password;
 const MongoClient = mongodb.MongoClient;
 
 var uri = `mongodb+srv://${id}:${password}@cluster0-jiiuz.mongodb.net/test?retryWrites=true`;
-// var uri = `mongodb+srv://TaesuHyeon:${password}@cluster0-jiiuz.mongodb.net/test?retryWrites=true`;
-// var uri = `mongodb://${id}:${password}@cluster0-shard-00-00-jiiuz.mongodb.net:27017,cluster0-shard-00-01-jiiuz.mongodb.net:27017,cluster0-shard-00-02-jiiuz.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`;
-// MongoClient.connect(
-//   uri,
-//   function(err, db) {
-//     console.log(db);
-//     db.close();
-//   }
-// );
 
 MongoClient.connect(
   uri,
-  function(err, client) {
-    // console.log(client);
-    const collection = client.db("koreahistory").collection("devices");
+  (err, client: any) => {
+    const collection = client.db("koreahistory").collection("joseon");
     // perform actions on the collection object
-    console.log(collection);
-    client.close();
+    collection.find({}).toArray((err, result: any) => {
+      if (err) {
+        console.error(err);
+      }
+
+      console.log(result);
+      client.close();
+    });
   }
 );
 

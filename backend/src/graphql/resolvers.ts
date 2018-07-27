@@ -1,8 +1,8 @@
-import data from "../data.json";
+import { getDatabase, DATABASE_NAME, COLLECTION_NAME } from "../database";
 
 const resolvers = {
   Query: {
-    kings: () => data.data
+    kings: async () => await getDatabase(DATABASE_NAME, COLLECTION_NAME)
   }
 };
 

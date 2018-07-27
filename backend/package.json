@@ -12,6 +12,7 @@
   "author": "qvil",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
     "graphql": "^0.13.2",
     "graphql-yoga": "^1.14.12",
     "mongodb": "^3.1.1",

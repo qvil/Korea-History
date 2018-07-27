@@ -1,9 +1,6 @@
 import { MongoClient } from "mongodb";
 import config from "../config/config.json";
 
-export const DATABASE_NAME = "koreahistory";
-export const COLLECTION_NAME = "joseon";
-
 const id = config.id;
 const password = config.password;
 const url = `mongodb+srv://${id}:${password}@cluster0-jiiuz.mongodb.net/test?retryWrites=true`;
@@ -35,7 +32,6 @@ export const getDatabase = async (dbName, collectionName) => {
     const collection = db.collection(collectionName);
     const doc = collection.find({}).toArray();
 
-    console.log(doc);
     return doc;
   } catch (error) {
     console.error(error.stack);

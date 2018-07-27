@@ -6,6 +6,9 @@ const typeDefs = `
   type Query {
     kings: [King]
   }
+  type Mutation {
+    king(title: String, image: String): King
+  }
 `;
 
 export default typeDefs;

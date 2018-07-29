@@ -8,6 +8,7 @@ const typeDefs = `
   }
   type Mutation {
     king(title: String, image: String): King
+    updateKing(title: String, modifyTitle: String, image: String): King
   }
 `;
 

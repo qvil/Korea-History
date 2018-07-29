@@ -30,6 +30,34 @@ export const insertDocument = async (dbName, collectionName, document) => {
   client.close();
 };
 
+export const updateDatabase = async (
+  dbName,
+  collectionName,
+  title,
+  document
+) => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(url);
+    console.log("Connected collectly to server");
+
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    let r;
+    r = await collection.updateOne(
+      { title },
+      { $set: { title: document.title } }
+    );
+    // assert.equal(1, r.matchedCount);
+    // assert.equal(1, r.modifiedCount);
+  } catch (error) {
+    console.error(error.stack);
+  }
+
+  client.close();
+};
+
 export const getDatabase = async (dbName, collectionName) => {
   let client;
 

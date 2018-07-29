@@ -1,4 +1,4 @@
-import { insertDocument, getDatabase } from "../database";
+import { insertDocument, getDatabase, updateDatabase } from "../database";
 import config from "../config/config.json";
 
 const DATABASE_NAME = config.DATABASE_NAME;
@@ -10,7 +10,12 @@ const resolvers = {
   },
   Mutation: {
     king: (_, { title, image }) =>
-      insertDocument(DATABASE_NAME, COLLECTION_NAME, { title, image })
+      insertDocument(DATABASE_NAME, COLLECTION_NAME, { title, image }),
+    updateKing: (_, { title, modifyTitle, image }) =>
+      updateDatabase(DATABASE_NAME, COLLECTION_NAME, title, {
+        title: modifyTitle,
+        image
+      })
   }
 };
 

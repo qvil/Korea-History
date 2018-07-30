@@ -47,8 +47,9 @@ export const updateDatabase = async (
     let r;
     r = await collection.updateOne(
       { title },
-      { $set: { title: document.title } }
+      { $set: { title: "newTitle", image: "newImage" } }
     );
+    // r = await collection.updateOne({ title }, { $set: document });
     // assert.equal(1, r.matchedCount);
     // assert.equal(1, r.modifiedCount);
   } catch (error) {

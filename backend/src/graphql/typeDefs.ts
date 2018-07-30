@@ -9,6 +9,7 @@ const typeDefs = `
   type Mutation {
     addKing(title: String, image: String): King
     updateKing(title: String, document: String): King
+    removeKing(title: String): King
   }
 `;
 

@@ -1,4 +1,9 @@
-import { insertDocument, getDatabase, updateDatabase } from "../database";
+import {
+  insertDocument,
+  getDatabase,
+  updateDatabase,
+  removeDatabase
+} from "../database";
 import config from "../config/config.json";
 
 const DATABASE_NAME = config.DATABASE_NAME;
@@ -12,7 +17,9 @@ const resolvers = {
     addKing: (_, { title, image }) =>
       insertDocument(DATABASE_NAME, COLLECTION_NAME, { title, image }),
     updateKing: (_, { title, document }) =>
-      updateDatabase(DATABASE_NAME, COLLECTION_NAME, title, document)
+      updateDatabase(DATABASE_NAME, COLLECTION_NAME, title, document),
+    removeKing: (_, { title }) =>
+      removeDatabase(DATABASE_NAME, COLLECTION_NAME, { title })
   }
 };
 

@@ -76,3 +76,24 @@ export const getDatabase = async (dbName, collectionName) => {
   }
   client.close();
 };
+
+export const removeDatabase = async (dbName, collectionName, condition) => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(url);
+    console.log("Connected collectly to server");
+
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    let r;
+    r = await collection.deleteOne(condition);
+    assert.equal(1, r.deletedCount);
+    // r = await collection.deleteMany(condition)
+    // assert.equal(condition.length, r.deletedCount) // ??
+  } catch (error) {
+    console.error(error.stack);
+  }
+
+  client.close();
+};

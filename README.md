@@ -8,10 +8,6 @@ https://qvil.github.io/korea-history/
 
 <!-- ![demo.png](demo.png) -->
 
-## Deadline
-
-~ 2018-07-31
-
 <!-- ## Prerequisites
 
 - Node.js >= 8.x (Recommended the latest version)

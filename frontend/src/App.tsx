@@ -2,6 +2,7 @@ import ApolloClient from "apollo-boost";
 import { defaultDataIdFromObject, InMemoryCache } from "apollo-cache-inmemory";
 import * as React from "react";
 import { ApolloProvider } from "react-apollo";
+import { HashRouter as Router } from "react-router-dom";
 import { Container } from "src/components";
 import Body from "src/components/Body";
 import Header from "src/components/Header";
@@ -43,10 +44,12 @@ class App extends React.Component {
     return (
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
-          <Container>
-            <Header />
-            <Body />
-          </Container>
+          <Router>
+            <Container>
+              <Header />
+              <Body />
+            </Container>
+          </Router>
         </ThemeProvider>
       </ApolloProvider>
     );

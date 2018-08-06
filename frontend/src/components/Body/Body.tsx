@@ -1,7 +1,6 @@
 import gql from "graphql-tag";
 import * as React from "react";
 import { Query } from "react-apollo";
-// import { BrowserRouter as Router } from "react-router-dom";
 import { Card } from "src/components";
 import BodyContainer from "./BodyContainer";
 

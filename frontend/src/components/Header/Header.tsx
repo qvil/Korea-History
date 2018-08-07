@@ -9,6 +9,7 @@ export interface IHeaderProps {
 const HeaderContainer = styled<IHeaderProps, any>("div")`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export default class Header extends React.Component<IHeaderProps, any> {

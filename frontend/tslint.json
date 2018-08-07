@@ -4,6 +4,7 @@
     "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
   },
   "rules": {
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "no-console": [false, "log", "error"]
   }
 }

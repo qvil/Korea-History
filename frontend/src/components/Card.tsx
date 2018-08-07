@@ -1,10 +1,14 @@
 import * as React from "react";
+import { withRouter } from "react-router";
 import { CardStyle, RaisedCardStyle } from "src/styles/mixin";
 import styled from "styled-components";
 
 export interface ICardProps {
   raised?: boolean;
+  index: number;
   image?: string;
+  history?: any;
+  match?: any;
 }
 
 const StyledCard = styled<ICardProps, any>("div")`
@@ -15,21 +19,22 @@ const StyledCard = styled<ICardProps, any>("div")`
   cursor: pointer;
 `;
 
-export default class Card extends React.Component<ICardProps, any> {
+class Card extends React.Component<ICardProps, any> {
   public state = {
     raised: false
   };
 
   public render() {
-    const { handleMouse } = this;
+    const { handleMouse, handleClick } = this;
     const { raised } = this.state;
-    const { children } = this.props;
+    const { children, index } = this.props;
 
     return (
       <StyledCard
         raised={raised}
         onMouseEnter={handleMouse("Enter")}
         onMouseLeave={handleMouse("Leave")}
+        onClick={handleClick(index)}
         {...this.props}
       >
         {children}
@@ -44,4 +49,11 @@ export default class Card extends React.Component<ICardProps, any> {
       this.setState({ raised: false });
     }
   };
+
+  private handleClick = (index: number) => () => {
+    const { match } = this.props;
+    this.props.history.push(`${match.path}/${index + 1}`);
+  };
 }
+
+export default withRouter<any>(Card);

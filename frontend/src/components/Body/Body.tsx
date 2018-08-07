@@ -13,7 +13,7 @@ export default class Body extends React.Component<IBodyProps, any> {
       <BodyContainer>
         <Switch>
           <Route exact={true} path="/" />
-          <Route path="/joseon" component={Joseon} />
+          <Route exact={true} path="/joseon" component={Joseon} />
           // tslint:disable-next-line:jsx-no-lambda
           {/* <Route render={() => <NotFound code={404} />} /> */}
           <Route component={NotFound} />

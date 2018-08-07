@@ -12,6 +12,7 @@ const StyledCard = styled<ICardProps, any>("div")`
   background: no-repeat center/100% url(${props => props.image});
   width: 9rem;
   height: 16rem;
+  cursor: pointer;
 `;
 
 export default class Card extends React.Component<ICardProps, any> {

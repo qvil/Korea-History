@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { CardStyle, RaisedCardStyle} from "src/styles/mixin"
+import { CardStyle, RaisedCardStyle } from "src/styles/mixin";
 import styled from "styled-components";
-
 
 export interface IButtonProps {
   raised?: boolean;
@@ -11,8 +10,8 @@ export interface IButtonProps {
 }
 
 const StyledButton = styled<IButtonProps, any>(Link)`
-  ${props => props.raised ? RaisedCardStyle : CardStyle}
-  background-color: #4CAF50;
+  ${props => (props.raised ? RaisedCardStyle : CardStyle)};
+  background-color: #4caf50;
   color: white;
   text-decoration: none;
 `;

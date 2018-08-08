@@ -44,7 +44,7 @@ class App extends React.Component {
     return (
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
-          <Router>
+          <Router basename="/korea-history">
             <Container>
               <Header />
               <Body />

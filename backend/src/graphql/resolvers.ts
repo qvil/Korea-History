@@ -6,8 +6,8 @@ import {
 } from "../database";
 import config from "../config/config.json";
 
-const DATABASE_NAME = config.DATABASE_NAME;
-const COLLECTION_NAME = config.COLLECTION_NAME;
+const DATABASE_NAME = config.database.DATABASE_NAME;
+const COLLECTION_NAME = config.database.COLLECTION_NAME;
 
 const resolvers = {
   Query: {

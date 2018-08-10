@@ -2,8 +2,8 @@ import { MongoClient } from "mongodb";
 import assert from "assert";
 import config from "../config/config.json";
 
-const id = config.id;
-const password = config.password;
+const id = config.database.id;
+const password = config.database.password;
 const url = `mongodb+srv://${id}:${password}@cluster0-jiiuz.mongodb.net/test?retryWrites=true`;
 
 export const insertDocument = async (dbName, collectionName, document) => {

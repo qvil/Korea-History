@@ -12,6 +12,7 @@ const app = new Koa();
 //   ctx.body = "Hello World";
 // });
 
+// $ GET /package.json
 app.use(serve("."));
 
 app.listen(config.server.koa.port);

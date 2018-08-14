@@ -68,3 +68,6 @@ dist
 
 # config
 config.json
+
+# build
+build

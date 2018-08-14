@@ -69,5 +69,6 @@ dist
 # config
 config.json
 
-# build
+# build & deploy
 build
+korea-history

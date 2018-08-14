@@ -6,21 +6,20 @@ import Koa from "koa";
 import config from "./config/config.json";
 import serve from "koa-static";
 
-
 const app = new Koa();
 
-app.use(async ctx => {
-  ctx.body = "Hello World";
-});
+// app.use(async ctx => {
+//   ctx.body = "Hello World";
+// });
 
-// app.use(serve(__dirname + "/build"));
-app.use(serve("./build"));
+app.use(serve("."));
 
 app.listen(config.server.koa.port);
+console.log(`🚀 Koa Server ready at ${config.server.koa.port}`);
 
 const options = { port: config.server.graphql.port };
 const server = new GraphQLServer({ typeDefs, resolvers });
 
 server.start(options, () => {
-  console.log(`🚀  Server ready at ${options.port}`);
+  console.log(`🚀 GraphQL Server ready at ${options.port}`);
 });

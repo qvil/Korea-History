@@ -11,7 +11,7 @@ export interface IButtonProps {
 
 const StyledButton = styled<IButtonProps, any>(Link)`
   ${props => (props.raised ? RaisedCardStyle : CardStyle)};
-  background-color: #4caf50;
+  background-color: ${props => props.theme.color.primary};
   color: white;
   text-decoration: none;
 `;

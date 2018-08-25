@@ -8,16 +8,20 @@ export interface IBodyProps {
   children?: any;
 }
 
+const NewBodyContainer = BodyContainer.extend`
+  margin-top: ${props => props.theme.spacing.gutter}rem;
+`;
+
 export default class Body extends React.Component<IBodyProps, any> {
   public render() {
     return (
-      <BodyContainer>
+      <NewBodyContainer>
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route path="/joseon" component={Joseon} />
           <Route component={NotFound} />
         </Switch>
-      </BodyContainer>
+      </NewBodyContainer>
     );
   }
 }

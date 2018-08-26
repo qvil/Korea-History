@@ -14,8 +14,13 @@ const resolvers = {
     kings: async () => await getDatabase(DATABASE_NAME, COLLECTION_NAME)
   },
   Mutation: {
-    addKing: (_, { title, image }) =>
-      insertDocument(DATABASE_NAME, COLLECTION_NAME, { title, image }),
+    addKing: (_, { title, image, level, description }) =>
+      insertDocument(DATABASE_NAME, COLLECTION_NAME, {
+        title,
+        image,
+        level,
+        description
+      }),
     updateKing: (_, { title, document }) =>
       updateDatabase(DATABASE_NAME, COLLECTION_NAME, title, document),
     removeKing: (_, { title }) =>

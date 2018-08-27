@@ -30,12 +30,10 @@ export const insertDocument = async (dbName, collectionName, document) => {
   client.close();
 };
 
-export const updateDatabase = async (
-  dbName,
-  collectionName,
-  title,
-  document
-) => {
+export const updateDatabase = async (dbName, collectionName, title, king) => {
+  if (!title) {
+    return;
+  }
   let client;
 
   try {
@@ -46,12 +44,14 @@ export const updateDatabase = async (
     const collection = db.collection(collectionName);
     let r;
     r = await collection.updateOne(
+      // { $set: { title: "newTitle", image: "newImage" } }
+      // { id },
       { title },
-      { $set: { title: "newTitle", image: "newImage" } }
+      { $set: { ...king } }
     );
     // r = await collection.updateOne({ title }, { $set: document });
-    // assert.equal(1, r.matchedCount);
-    // assert.equal(1, r.modifiedCount);
+    assert.equal(1, r.matchedCount);
+    assert.equal(1, r.modifiedCount);
   } catch (error) {
     console.error(error.stack);
   }

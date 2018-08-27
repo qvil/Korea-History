@@ -21,8 +21,8 @@ const resolvers = {
         level,
         description
       }),
-    updateKing: (_, { title, document }) =>
-      updateDatabase(DATABASE_NAME, COLLECTION_NAME, title, document),
+    updateKing: (_, { title, king }) =>
+      updateDatabase(DATABASE_NAME, COLLECTION_NAME, title, king),
     removeKing: (_, { title }) =>
       removeDatabase(DATABASE_NAME, COLLECTION_NAME, { title })
   }

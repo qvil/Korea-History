@@ -33,6 +33,7 @@ class Joseon extends React.Component<IJoseonProps, any> {
           kings {
             title
             image
+            level
           }
         }
       `}
@@ -43,10 +44,12 @@ class Joseon extends React.Component<IJoseonProps, any> {
         // tslint:disable-next-line:curly
         if (error) return <p>Error :(</p>;
 
-        return data.kings.map((value: any, index: number) => (
-          <Card key={index} index={index} image={value.image}>{`${index +
-            1}대 ${value.title}`}</Card>
-        ));
+        return data.kings.map((value: any, index: number) => {
+          return value.level > 1 ? (
+            <Card key={index} index={index} image={value.image}>{`${index +
+              1}대 ${value.title}`}</Card>
+          ) : null;
+        });
       }}
     </Query>
   );

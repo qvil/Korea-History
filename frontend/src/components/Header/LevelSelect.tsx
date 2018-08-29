@@ -46,18 +46,28 @@ export default class LevelSelect extends React.Component<
       { level: 4, title: "공시생" }
     ]
   };
+
   public render() {
+    const { handleChange } = this;
     const { levelList } = this.state;
 
     return (
       <SelectWrapper>
         레벨
-        <Select>
+        <Select onChange={handleChange}>
           {levelList.map((level: Ilevel) => (
-            <Item key={level.level}>{`${level.level}(${level.title})`}</Item>
+            <Item
+              key={level.level}
+              value={level.level}
+              onClick={handleChange}
+            >{`${level.level}(${level.title})`}</Item>
           ))}
         </Select>
       </SelectWrapper>
     );
   }
+
+  private handleChange = (e: any) => {
+    this.setState({ level: e.target.value });
+  };
 }

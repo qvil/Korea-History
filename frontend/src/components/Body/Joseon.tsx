@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 // import { withRouter } from "react-router";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { Card } from "src/components";
+import { Consumer } from "src/store";
 
 export interface IJoseonProps {
   children?: any;
@@ -44,12 +45,22 @@ class Joseon extends React.Component<IJoseonProps, any> {
         // tslint:disable-next-line:curly
         if (error) return <p>Error :(</p>;
 
-        return data.kings.map((value: any, index: number) => {
-          return value.level > 1 ? (
-            <Card key={index} index={index} image={value.image}>{`${index +
-              1}대 ${value.title}`}</Card>
-          ) : null;
-        });
+        return (
+          <Consumer>
+            {store =>
+              data.kings.map(
+                (value: any, index: number) =>
+                  value.level > store.level ? (
+                    <Card
+                      key={index}
+                      index={index}
+                      image={value.image}
+                    >{`${index + 1}대 ${value.title}`}</Card>
+                  ) : null
+              )
+            }
+          </Consumer>
+        );
       }}
     </Query>
   );

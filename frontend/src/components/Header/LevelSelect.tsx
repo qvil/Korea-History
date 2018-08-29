@@ -1,6 +1,7 @@
 import * as React from "react";
 import { CardStyle } from "src/styles/mixin";
 import styled from "styled-components";
+import { Consumer } from "src/store";
 
 interface IContainerProps {
   props?: any;
@@ -52,18 +53,23 @@ export default class LevelSelect extends React.Component<
     const { levelList } = this.state;
 
     return (
-      <SelectWrapper>
-        레벨
-        <Select onChange={handleChange}>
-          {levelList.map((level: Ilevel) => (
-            <Item
-              key={level.level}
-              value={level.level}
-              onClick={handleChange}
-            >{`${level.level}(${level.title})`}</Item>
-          ))}
-        </Select>
-      </SelectWrapper>
+      <Consumer>
+        {store => (
+          <SelectWrapper>
+            레벨
+            {/* <Select onChange={handleChange}> */}
+            <Select onChange={store.setLevel}>
+              {levelList.map((level: Ilevel) => (
+                <Item
+                  key={level.level}
+                  value={level.level}
+                  onClick={handleChange}
+                >{`${level.level}(${level.title})`}</Item>
+              ))}
+            </Select>
+          </SelectWrapper>
+        )}
+      </Consumer>
     );
   }
 

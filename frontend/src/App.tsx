@@ -6,9 +6,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "src/components";
 import Body from "src/components/Body";
 import Header from "src/components/Header";
+import { Provider } from "src/store";
 import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
-import { injectGlobal, ThemeProvider } from "styled-components";
+import styled, { injectGlobal, ThemeProvider } from "styled-components";
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object: any) => {
@@ -40,16 +41,25 @@ injectGlobal`
 `;
 
 class App extends React.Component {
+  public state = {
+    level: 1,
+    setLevel: (level: number) => {
+      this.setState({ level });
+    }
+  };
+
   public render() {
     return (
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
-          <Router basename="/korea-history">
-            <Container>
-              <Header />
-              <Body />
-            </Container>
-          </Router>
+          <Provider value={this.state}>
+            <Router basename="/korea-history">
+              <Container>
+                <Header />
+                <Body />
+              </Container>
+            </Router>
+          </Provider>
         </ThemeProvider>
       </ApolloProvider>
     );

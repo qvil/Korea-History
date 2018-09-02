@@ -9,7 +9,7 @@ import Header from "src/components/Header";
 import { Provider } from "src/store";
 import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
-import styled, { injectGlobal, ThemeProvider } from "styled-components";
+import { injectGlobal, ThemeProvider } from "styled-components";
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object: any) => {

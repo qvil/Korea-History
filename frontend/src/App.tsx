@@ -9,7 +9,7 @@ import Header from "src/components/Header";
 import { Provider } from "src/store";
 import { height100 } from "src/styles/mixin";
 import theme from "src/styles/theme";
-import styled, { injectGlobal, ThemeProvider } from "styled-components";
+import { injectGlobal, ThemeProvider } from "styled-components";
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object: any) => {
@@ -42,10 +42,10 @@ injectGlobal`
 
 class App extends React.Component {
   public state = {
-    level: 1,
-    setLevel: (level: number) => {
-      this.setState({ level });
-    }
+    level: 1
+    // setLevel: (level: number) => {
+    //   this.setState({ level });
+    // }
   };
 
   public render() {

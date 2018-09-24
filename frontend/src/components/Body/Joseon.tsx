@@ -49,14 +49,15 @@ class Joseon extends React.Component<IJoseonProps, any> {
           <Consumer>
             {store =>
               data.kings.map(
-                (value: any, index: number) =>
-                  value.level > store.level ? (
-                    <Card
-                      key={index}
-                      index={index}
-                      image={value.image}
-                    >{`${index + 1}대 ${value.title}`}</Card>
-                  ) : null
+                (value: any, index: number) => (
+                  // value.level > store.level ? (
+                  <Card
+                    key={index}
+                    index={index}
+                    image={value.image}
+                  >{`${index + 1}대 ${value.title}`}</Card>
+                )
+                // ) : null
               )
             }
           </Consumer>
